@@ -1,0 +1,411 @@
+/* balloon section with video background */
+.balloon {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.balloon-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Dark overlay so text stays readable over any part of the video */
+.balloon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.balloon-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.header-content h1,
+.balloon-content h1 {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0;
+  color: #fff;
+}
+
+.balloon-content .tagline {
+  font-size: 1.1rem;
+  color: #eee;
+  margin-top: 12px;
+}
+
+/* Left-side vertical nav */ 
+.nav-links {
+  position: fixed;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 10;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #c00a89;
+}
+
+html, body {
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* disables scrolling entirely */
+
+}
+
+.about {
+  position: relative;
+  height: 100vh; /* exact viewport height, not min-height */
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 40px 100px;
+}
+
+.about-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.about-text {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-text h2,
+.about-text p {
+  color: #fff;
+}
+
+.nav-links {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 2;
+  padding: 0 40px;
+}
+
+.nav-links {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 10; /* higher than everything else so it always stays on top */
+  padding: 0 40px;
+}
+
+.nav-links a:hover {
+  color: #a8079e;
+}
+
+
+.projects {
+  position: relative;
+  height: 100vh; /* exact viewport height, not min-height */
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 40px 100px;
+}
+
+.projects-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 0;
+}
+
+
+.projects-text {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: -80vh; 
+
+}
+
+.projects-text h2,
+.projects-text p {
+  color: #fff;
+  
+}
+
+.skills {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 60px 40px 100px;
+  background-color: #000;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* left image / text / right image, equal thirds */
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.skills-image {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.skills-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.skills-image img.active {
+  opacity: 1;
+}
+
+.skills-ticker-wrapper {
+  height: 300px; /* visible scroll window — adjust to taste */
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+}
+
+.skills-ticker-track {
+  animation: scrollUp 25s linear infinite; /* slower, since your list is huge now */
+}
+
+.skills-ticker {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skills-ticker li {
+  padding: 10px 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+
+@keyframes scrollUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+.skills-text h1 {
+  text-align: center;
+}
+
+.contact {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px 100px;
+  background-color: #000;
+}
+
+.contact-content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.contact-content h1 {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+.contact-content .tagline {
+  color: #ccc;
+  margin-bottom: 32px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #66b3ff;
+}
+
+.submit-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  background: #66b3ff;
+  color: #fff;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.contact-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-links a:hover {
+  color: #66b3ff;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 100; /* higher than any overlay/video z-index nearby */
+}
+
+.dvd-bounce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 62px; /* adjust size as you like */
+  height: auto;
+  z-index: 1; /* keep this LOW so it doesn't cover your form — raise it if you want it on top instead */
+  pointer-events: none; /* important: prevents it from blocking clicks on anything underneath */
+}
+
+.corner-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("pig.JPG");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 0; /* behind the dvd logo and content, but above the plain black background */
+  transition: opacity 0.15s ease-in;
+  pointer-events: none;
+}
+
+.corner-flash.flash-active {
+  opacity: 1;
+  transition: opacity 0.05s ease-out;
+}
