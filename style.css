@@ -53,16 +53,22 @@
   margin-top: 12px;
 }
 
+
+
 /* Left-side vertical nav */ 
 .nav-links {
   position: fixed;
+  left: 0;
   top: 50%;
-  left: 30px;
+  bottom: 40px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 24px;
   z-index: 10;
+  padding: 0 40px;
+  font-size: 1rem;
 }
 
 .nav-links a {
@@ -70,88 +76,91 @@
   color: #fff;
   font-weight: 500;
   transition: color 0.2s ease;
+  font-size: 0.6rem;
 }
 
 .nav-links a:hover {
   color: #c00a89;
 }
 
+
+
 html, body {
   background-color: #000;
   color: #fff;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* disables scrolling entirely */
+  overflow: hidden; 
 
 }
+/* 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+} */
 
-.about {
+
+.about-page {
   position: relative;
-  height: 100vh; /* exact viewport height, not min-height */
-  width: 100vw;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px 40px 100px;
 }
 
-.about-bg-video {
+.about-photo-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-.about-text {
-  position: relative;
+.about-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 2;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
-.about-text h2,
-.about-text p {
+.about-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 600px;
+}
+
+.about-content .about-eyebrow {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.about-content h1 {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0;
   color: #fff;
 }
 
-.nav-links {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  z-index: 2;
-  padding: 0 40px;
-}
-
-.nav-links {
-  position: fixed;
-  bottom: 40px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  z-index: 10; /* higher than everything else so it always stays on top */
-  padding: 0 40px;
-}
-
-.nav-links a:hover {
-  color: #a8079e;
+.about-content .about-body {
+  font-size: 0.90rem;
+  line-height: 1.75;
+  color: #eee;
+  margin-top: 16px;
 }
 
 
@@ -175,7 +184,7 @@ html, body {
   width: auto;
   height: auto;
   object-fit: cover;
-  transform: translate(-50%, -50%) scale(0.6);
+  transform: translate(-50%, -50%) scale(1);
   z-index: 0;
 }
 
@@ -205,36 +214,33 @@ html, body {
   background-color: #000;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* left image / text / right image, equal thirds */
-  align-items: center;
-  gap: 40px;
+.skills-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
   height: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
-.skills-image {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.skills-image img {
+.skills-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
-.skills-image img.active {
-  opacity: 1;
+.skills-text {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 50%;
 }
 
 .skills-ticker-wrapper {
@@ -282,14 +288,29 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 60px 40px 100px;
+  padding-left: 100px;
   background-color: #000;
 }
 
+
+
 .contact-content {
-  max-width: 500px;
   width: 100%;
   text-align: center;
+  /* remove max-width from here — it's now handled per-block below */
 }
+
+.contact-header {
+  max-width: clamp(340px, 80vw, 500px);
+
+  margin: 0 auto;
+}
+
+.contact-form-wrapper {
+  max-width: clamp(280px, 90vw, 420px); /* independent from header, can go wider/narrower */
+  margin: 0 auto;
+}
+
 
 .contact-content h1 {
   font-family: "Monoton", sans-serif;
@@ -332,6 +353,8 @@ html, body {
   font-family: inherit;
   font-size: 1rem;
   resize: vertical;
+
+
 }
 
 .form-group input:focus,

@@ -1,9 +1,9 @@
 const leftImages = [
-  "star.JPG", "Tumb.JPG", "Pigeon.JPG", "earrings.jpeg", "coconut.jpeg", "White temple.jpeg"
+  "star.JPG", "Tumb.JPG", "Pigeon.JPG", "earrings.jpeg", "coconut.jpeg", "White temple.jpeg", "lock.jpeg", "oscil.jpeg"
 ];
 
 const rightImages = [
-  "Jewellererery.JPG", "IMG_4123.JPG", "fern.JPG", "chiller.JPG", "CameraThumb.JPG"
+  "Jewellererery.JPG", "IMG_4123.JPG", "fern.JPG", "chiller.JPG", "CameraThumb.JPG", "fpga.jpeg", "cop chain.jpeg"
 ];
 
 function setupCarousel(containerId, imageList, interval = 4000) {
