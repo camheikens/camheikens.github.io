@@ -159,6 +159,29 @@ html, body {
   color: #eee;
   margin-top: 16px;
 }
+.about-links a{
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 240px;
+  margin-top: 0;
+  color: #fff;
+  z-index: 3;
+}
+/* 
+.about-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-bottom: 30%;
+} */
+
+.about-links a:hover {
+  color: #8e0677;
+}
 
 
 .projects {
@@ -237,7 +260,7 @@ html, body {
   z-index: 2;
   max-width: 700px;
   margin: 0 auto;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .skills-ticker-wrapper {
