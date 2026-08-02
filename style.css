@@ -42,7 +42,7 @@
 .balloon-content h1 {
   font-family: "Monoton", sans-serif;
   font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(1rem, 6vw, 4rem);
   margin: 0;
   color: #fff;
 }
@@ -76,8 +76,9 @@
   color: #fff;
   font-weight: 500;
   transition: color 0.2s ease;
-  font-size: 0.6rem;
+  font-size: 1rem;   /* PC / default size */
 }
+
 
 .nav-links a:hover {
   color: #c00a89;
@@ -93,11 +94,7 @@ html, body {
   overflow: hidden; 
 
 }
-/* 
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-} */
+
 
 
 .about-page {
@@ -240,7 +237,7 @@ html {
   z-index: 2;
   max-width: 700px;
   margin: 0 auto;
-  margin-top: 50%;
+  margin-top: 15%;
 }
 
 .skills-ticker-wrapper {
@@ -275,6 +272,11 @@ html {
 
 .skills-text h1 {
   text-align: center;
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0;
+  color: #fff;
 }
 
 .contact {
@@ -431,4 +433,25 @@ html {
 .corner-flash.flash-active {
   opacity: 1;
   transition: opacity 0.05s ease-out;
+}
+
+
+@media (max-width: 600px) {
+  .nav-links a {
+    font-size: 0.75rem;   /* iPhone / mobile size */
+  }
+  .balloon-content h1{
+    font-size: 1.3rem;
+  }.balloon-content .tagline{
+    font-size : 0.5rem;
+  }
+  .skills-text h1{
+    font-size: 1.7rem
+  }
+  .skills-text {
+    margin-top: 40%;
+  }
+  .about-content .about-body{
+    font-size: 0.6rem;
+  }
 }
